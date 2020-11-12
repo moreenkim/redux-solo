@@ -18,7 +18,7 @@ export default function reduce(state = initialState, action = {}) {
   }
 }
 
-//selectors
+//selectors gets data from store
 export function getBootcamp(state) {
   return state.bootcamps.currentBootcamp;
 }
