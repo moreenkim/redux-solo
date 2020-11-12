@@ -12,9 +12,7 @@ export function fetchBootcamp(id) {
         bootcampData,
       });
     } catch (error) {
-      dispatch({
-        errorMessage: error,
-      });
+      console.error(error);
     }
   };
 }
