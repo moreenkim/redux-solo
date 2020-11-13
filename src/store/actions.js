@@ -16,3 +16,18 @@ export function fetchBootcamp(id) {
     }
   };
 }
+
+export function fetchAllBootcamps() {
+  return async (dispatch) => {
+    try {
+      const bootcampsData = await BootcampDetails.getAllBootcamps();
+
+      dispatch({
+        type: types.ALL_BOOTCAMPS_FETCHED,
+        bootcampsData,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
