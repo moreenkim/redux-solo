@@ -19,14 +19,14 @@ export class BootcampDetail extends Component {
       //debugger;
       return (
         <div>
-          <h1>Bootcamps</h1>
+          <h1>Bootcamp</h1>
           <DetailView data={bootcamp.data} />
         </div>
       );
     }
     return (
       <div>
-        <h1>Bootcamps</h1>
+        <h1>Bootcamp</h1>
         <Spinner color="primary" style={{ width: '3rem', height: '3rem' }} />
       </div>
     );
