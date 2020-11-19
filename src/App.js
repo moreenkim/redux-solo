@@ -5,6 +5,7 @@ import './App.css';
 
 import BootcampDetail from './container/BootcampDetail';
 import AllBootcamps from './container/AllBootcamps';
+import DetailViewCard from './component/DetailViewCard';
 
 function App() {
   return (
@@ -13,15 +14,15 @@ function App() {
         <NavbarBrand href="/">DevCamper</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink href="/bootcamps">BootcampDetail</NavLink>
+            {/* <NavLink href="/bootcamps">BootcampDetail</NavLink> */}
             <NavLink href="/">Bootcamps</NavLink>
           </NavItem>
         </Nav>
       </Navbar>
 
       <Switch>
-        <Route exact path="/bootcamps" component={BootcampDetail} />
         <Route exact path="/" component={AllBootcamps} />
+        <Route exact path="/bootcamps/:id" component={BootcampDetail} />
       </Switch>
     </div>
   );
