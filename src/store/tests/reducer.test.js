@@ -62,3 +62,67 @@ describe('store/bootcamps/reducer', () => {
       .toReturnState({ ...initialState, currentBootcamp });
   });
 });
+
+describe('store/bootcamps/reducer', () => {
+  it('should have initial state', () => {
+    expect(bootcamps()).toEqual(initialState);
+  });
+
+  it('should not affect state', () => {
+    Reducer(bootcamps)
+      .expect({ type: 'NOT_EXISTING' })
+      .toReturnState(initialState);
+  });
+
+  it('should store all fetched bootcamps', () => {
+    const allBootcamps = {
+      success: true,
+      count: 4,
+      pagination: {},
+      data: [
+        {
+          name: 'name',
+          phone: 'phone',
+          email: 'email',
+          description: 'description',
+        },
+      ],
+    };
+    const action = {
+      type: actionTypes.ALL_BOOTCAMPS_FETCHED,
+      bootcampsData: allBootcamps,
+    };
+    Reducer(bootcamps)
+      .expect(action)
+      .toReturnState({ ...initialState, allBootcamps });
+  });
+
+  it('should store all fetched bootcamps and override existing bootcamps', () => {
+    const allBootcamps = {
+      success: true,
+      count: 4,
+      pagination: {},
+      data: [
+        {
+          name: 'name',
+          phone: 'phone',
+          email: 'email',
+          description: 'description',
+        },
+      ],
+    };
+    const existingState = Immutable({
+      ...initialState,
+      allBootcamps: { website: 'website' },
+    });
+
+    const action = {
+      type: actionTypes.ALL_BOOTCAMPS_FETCHED,
+      bootcampsData: allBootcamps,
+    };
+    Reducer(bootcamps)
+      .withState(existingState)
+      .expect(action)
+      .toReturnState({ ...initialState, allBootcamps });
+  });
+});

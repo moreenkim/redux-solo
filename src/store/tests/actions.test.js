@@ -43,3 +43,54 @@ describe('store/actions', () => {
     expect(console.error).toHaveBeenCalledWith(Error('oops'));
   });
 });
+
+describe('store/actions', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should fetch all bootcamps from the server', async () => {
+    BootcampDetails.getAllBootcamps.mockReturnValueOnce({
+      success: true,
+      count: 1,
+      pagination: {},
+      data: [
+        {
+          name: 'name',
+          phone: 'phone',
+          email: 'email',
+          description: 'description',
+        },
+      ],
+    });
+    const dispatches = await Thunk(bootcampData.fetchAllBootcamps).execute('1'); //disp is arr
+    expect(dispatches.length).toBe(1);
+    expect(dispatches[0].isPlainObject()).toBe(true);
+    expect(dispatches[0].getAction()).toEqual({
+      type: types.ALL_BOOTCAMPS_FETCHED,
+      bootcampsData: {
+        success: true,
+        count: 1,
+        pagination: {},
+        data: [
+          {
+            name: 'name',
+            phone: 'phone',
+            email: 'email',
+            description: 'description',
+          },
+        ],
+      },
+    });
+  });
+
+  it('should fetch all bootcamps and print error found on console', async () => {
+    BootcampDetails.getAllBootcamps.mockImplementationOnce(() => {
+      throw new Error('oops');
+    });
+    console.error = jest.fn();
+    const dispatches = await Thunk(bootcampData.fetchAllBootcamps).execute();
+    expect(dispatches.length).toBe(0);
+    expect(console.error).toHaveBeenCalledWith(Error('oops'));
+  });
+});
