@@ -8,7 +8,8 @@ import { Spinner } from 'reactstrap';
 
 export class BootcampDetail extends Component {
   componentDidMount() {
-    this.props.fetchBootcamp('5d725a1b7b292f5f8ceff788');
+    //debugger;
+    this.props.fetchBootcamp(this.props.match.params.id);
   }
 
   render() {
