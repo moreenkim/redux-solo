@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class BootcampDetails {
   async getAllBootcamps(url = 'http://localhost:5000/api/v1/bootcamps') {
     const response = await fetch(url, {

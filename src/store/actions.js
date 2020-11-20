@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import BootcampDetails from '../services/bootcamps';
 import * as types from './actionTypes';
 

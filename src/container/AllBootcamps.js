@@ -5,7 +5,7 @@ import * as bootcampActions from '../store/actions';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'reactstrap';
 
-import DetailView from '../component/DetailView';
+import DetailViewCard from '../component/DetailViewCard';
 
 export class AllBootcamps extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ export class AllBootcamps extends Component {
     if (Object.keys(bootcamps).length && bootcamps.count) {
       //debugger;
       bootcamps = bootcamps.data.map((bootcamp) => {
-        return <DetailView data={bootcamp} />;
+        return <DetailViewCard data={bootcamp} />;
       });
       return <div> {bootcamps} </div>;
     }
