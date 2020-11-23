@@ -1,3 +1,3 @@
-import bootcamps from './reducer';
+import bootcamps from './bootcamps/reducer';
 
 export { bootcamps };

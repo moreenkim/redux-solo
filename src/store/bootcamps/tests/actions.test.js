@@ -2,9 +2,9 @@ import { Thunk } from 'redux-testkit';
 
 import * as types from '../actionTypes';
 import * as bootcampData from '../actions';
-import BootcampDetails from '../../services/bootcamps';
+import BootcampDetails from '../../../services/bootcamps';
 
-jest.mock('../../services/bootcamps');
+jest.mock('../../../services/bootcamps');
 //mock: where data abt how fn has been called and fn return is kept
 
 describe('store/actions', () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as bootcampSelectors from '../store/reducer';
-import * as bootcampActions from '../store/actions';
+import * as bootcampSelectors from '../store/bootcamps/reducer';
+import * as bootcampActions from '../store/bootcamps/actions';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'reactstrap';
 

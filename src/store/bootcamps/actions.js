@@ -1,4 +1,4 @@
-import BootcampDetails from '../services/bootcamps';
+import BootcampDetails from '../../services/bootcamps';
 import * as types from './actionTypes';
 
 export function fetchBootcamp(id) {
