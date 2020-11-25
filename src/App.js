@@ -5,6 +5,7 @@ import './App.css';
 
 import BootcampDetail from './container/BootcampDetail';
 import AllBootcamps from './container/AllBootcamps';
+import { UserLogin } from './container/UserLogin';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Nav className="mr-auto" navbar>
           <NavItem>
             <NavLink href="/">Bootcamps</NavLink>
+            <NavLink href="/login">Login</NavLink>
           </NavItem>
         </Nav>
       </Navbar>
@@ -21,6 +23,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={AllBootcamps} />
         <Route exact path="/bootcamps/:id" component={BootcampDetail} />
+        <Route exact path="/login" component={UserLogin} />
       </Switch>
     </div>
   );

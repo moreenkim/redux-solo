@@ -1,4 +1,4 @@
-import BootcampDetails from './bootcamps';
+import BootcampDetails from '../bootcamps';
 
 global.fetch = require('jest-fetch-mock');
 
