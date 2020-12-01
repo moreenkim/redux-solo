@@ -15,6 +15,8 @@ function App() {
         <Nav className="mr-auto" navbar>
           <NavItem>
             <NavLink href="/">Bootcamps</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink href="/login">Login</NavLink>
           </NavItem>
         </Nav>
