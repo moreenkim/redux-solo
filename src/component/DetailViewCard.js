@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 
 const DetailViewCard = (props) => {
-  const { name, description, id, photo } = props.data;
+  const { name, description, id } = props.data;
 
   console.log(props.data);
 
