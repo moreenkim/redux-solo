@@ -4,7 +4,8 @@ import * as types from './actionTypes';
 
 const initialState = Immutable({
   // isLoggedIn: {},
-  token: {},
+  token: null,
+  profile: {},
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -16,6 +17,10 @@ export default function reduce(state = initialState, action = {}) {
     case types.TOKEN:
       return state.merge({
         token: action.token,
+      });
+    case types.USER_PROFILE:
+      return state.merge({
+        profile: action.profile,
       });
     default:
       return state;
@@ -29,4 +34,8 @@ export default function reduce(state = initialState, action = {}) {
 
 export function getUserToken(state) {
   return state.users.token;
+}
+
+export function userAuthenticatedSelector(state) {
+  return state.users.profile;
 }
