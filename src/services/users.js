@@ -1,4 +1,15 @@
-//import * as actionTypes from '../store/users/actionTypes';
+import * as userSelectors from '../store/users/reducer';
+
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import thunk from 'redux-thunk';
+import * as reducers from '../store/reducers';
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  combineReducers(reducers),
+  composeEnhancer(applyMiddleware(thunk))
+);
 
 class UserService {
   async authenticateUser(payload) {
@@ -25,21 +36,26 @@ class UserService {
     return token;
   }
 
-  // async getUserWithToken(url = 'http://localhost:5000/api/v1/auth/me') {
-  //   const response = await fetch(url, {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Token ${actionTypes}`,
-  //     },
-  //   });
+  async userAuthenticated(token) {
+    const url = 'http://localhost:5000/api/v1/auth/me';
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-  //   if (!response.ok) {
-  //     throw new Error(
-  //       `UserService getUserWithToken failed, HTTP status ${response.status}`
-  //     );
-  //   }
+    if (!response.ok) {
+      throw new Error(
+        `UserService getUserWithToken failed, HTTP status ${response.status}`
+      );
+    }
 
-  // }
+    const { data } = await response.json();
+
+    return data;
+  }
 }
 
 export default new UserService();
