@@ -51,7 +51,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
+  "devdependencies": {
     "testkit": "^0.1.1"
   }
 }
