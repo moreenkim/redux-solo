@@ -30,3 +30,18 @@ export function authenticateUserAction(payload) {
     }
   };
 }
+
+export function userAuthenticatedAction(token) {
+  return async (dispatch) => {
+    try {
+      const profile = await UserService.userAuthenticated(token);
+
+      dispatch({
+        type: types.USER_PROFILE,
+        profile,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
