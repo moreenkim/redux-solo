@@ -1,15 +1,16 @@
-import * as userSelectors from '../store/users/reducer';
+//import * as userSelectors from '../store/users/reducer';
 
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import thunk from 'redux-thunk';
-import * as reducers from '../store/reducers';
+//import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// import thunk from 'redux-thunk';
+// import * as reducers from '../store/reducers';
 
-const store = createStore(
-  combineReducers(reducers),
-  composeEnhancer(applyMiddleware(thunk))
-);
+//const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// const store = createStore(
+//   combineReducers(reducers),
+//   composeEnhancer(applyMiddleware(thunk))
+// );
 
 class UserService {
   async authenticateUser(payload) {
