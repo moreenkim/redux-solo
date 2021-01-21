@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Form, FormGroup, Col, Input, Button, Label } from 'reactstrap';
+import { Form, FormGroup, Col, Input, Button } from 'reactstrap';
 //import PropTypes from 'prop-types';
 
 export class UserForm extends Component {
