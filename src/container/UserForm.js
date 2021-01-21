@@ -58,13 +58,12 @@ export class UserForm extends Component {
               </FormGroup>
 
               <FormGroup className="row">
-                <Col md="3">
-                  <Label for="password">Password*</Label>
-                </Col>
-                <Col md="9">
+                <Col sm="6">
                   <Input
                     name="password"
                     type="password"
+                    bsSize="lg"
+                    placeholder="Password"
                     aria-label="password"
                     onChange={handleChange}
                     onBlur={handleBlur}
