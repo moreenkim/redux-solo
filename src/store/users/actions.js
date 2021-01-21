@@ -45,3 +45,17 @@ export function userAuthenticatedAction(token) {
     }
   };
 }
+
+export function registerUser(payload) {
+  return async (dispatch) => {
+    const token = await UserService.newUserRegister(payload);
+    try {
+      dispatch({
+        type: types.TOKEN,
+        token,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
