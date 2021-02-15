@@ -68,19 +68,19 @@ class UserService {
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
+    if (!response.ok && response.status !== 400) {
       throw new Error(
         `UserService newUserRegister failed, HTTP status ${response.status}`
       );
     }
 
-    const { token } = await response.json();
+    const apiResponse = await response.json();
 
-    if (response.status === 400) {
-      throw token.errors;
+    if (!apiResponse.success) {
+      throw apiResponse.error;
     }
 
-    return token;
+    return apiResponse.token;
   }
 }
 
