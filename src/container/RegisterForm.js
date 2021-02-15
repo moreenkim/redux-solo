@@ -3,12 +3,64 @@ import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Form, FormGroup, Col, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Col, Input, Button, Alert } from 'reactstrap';
+import * as Yup from 'yup';
+import * as errorHandlerSelectors from '../store/errorHandler/reducer';
 //import PropTypes from 'prop-types';
+
+const transformMyApiErrors = function (array) {
+  const errors = {};
+  const field = array.split('`')[1];
+  let message = array.split('`').pop().split(') ').pop();
+  message = `${field} ${message}`;
+  errors[field] = message;
+
+  return errors;
+};
 
 export class RegisterForm extends Component {
   static redirect(link) {
     return <Redirect to={link} />;
+  }
+
+  static validate(getValidationSchema) {
+    return (values) => {
+      const validationSchema = getValidationSchema(values);
+      try {
+        validationSchema.validateSync(values, { abortEarly: false });
+        return {};
+      } catch (error) {
+        return RegisterForm.getErrorsFromValidationError(error);
+      }
+    };
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.getValidationSchema = this.getValidationSchema.bind(this);
+  }
+
+  getValidationSchema() {
+    const validator = {
+      name: Yup.string().required('Username is required'),
+      email: Yup.string()
+        .required('Email is required')
+        .email('Please add a valid email'),
+      password: Yup.string().required('Password is required'),
+      role: Yup.string().required('Please add role'),
+    };
+    return Yup.object().shape(validator);
+  }
+
+  static getErrorsFromValidationError(validationError) {
+    const FIRST_ERROR = 0;
+    return validationError.inner.reduce((errors, error) => {
+      return {
+        ...errors,
+        [error.path]: error.errors[FIRST_ERROR],
+      };
+    }, {});
   }
 
   render() {
@@ -16,7 +68,8 @@ export class RegisterForm extends Component {
     return (
       <Formik
         initialValues={initialData}
-        onSubmit={async (values, { setSubmitting, setStatus }) => {
+        validate={RegisterForm.validate(this.getValidationSchema)}
+        onSubmit={async (values, { setSubmitting, setStatus, setErrors }) => {
           const payload = {
             name: values.name,
             email: values.email,
@@ -28,13 +81,22 @@ export class RegisterForm extends Component {
             await formActionDispatch(payload).then(() => {
               setSubmitting(false);
               setStatus('done');
+              const { errorMessage } = this.props;
+              const { hasError } = this.props;
+              if (hasError) {
+                setErrors(transformMyApiErrors(errorMessage));
+              } else {
+                setStatus('done');
+              }
             });
           } catch (error) {
+            debugger;
             console.error(error);
           }
         }}
         render={({
           values,
+          errors,
           status,
           handleChange,
           handleBlur,
@@ -43,6 +105,7 @@ export class RegisterForm extends Component {
           setStatus,
         }) => (
           <div>
+            {errors.data && <Alert color="danger">{errors.data}</Alert>}
             <Form onSubmit={handleSubmit}>
               <FormGroup className="row">
                 <Col sm="6">
@@ -123,8 +186,15 @@ export class RegisterForm extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    hasError: errorHandlerSelectors.getHasError(state),
+    errorMessage: errorHandlerSelectors.getErrorMessage(state),
+  };
+}
+
 function mapDispatchToProps(dispatch, ownProps) {
   return bindActionCreators({ formActionDispatch: ownProps.action }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
