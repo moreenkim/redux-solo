@@ -1,5 +1,6 @@
 import UserService from '../../services/users';
 import * as types from './actionTypes';
+import * as errorHandlerTypes from '../errorHandler/actionTypes';
 
 // export function fetchUser(id) {
 //   return async (dispatch) => {
@@ -48,14 +49,18 @@ export function userAuthenticatedAction(token) {
 
 export function registerUser(payload) {
   return async (dispatch) => {
-    const token = await UserService.newUserRegister(payload);
     try {
+      const token = await UserService.newUserRegister(payload);
       dispatch({
         type: types.TOKEN,
         token,
       });
+      dispatch({ type: errorHandlerTypes.REQUEST_SUCCESS });
     } catch (error) {
-      console.error(error);
+      dispatch({
+        type: errorHandlerTypes.REQUEST_FAILURE,
+        errorMessage: error,
+      });
     }
   };
 }
