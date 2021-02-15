@@ -57,6 +57,31 @@ class UserService {
 
     return data;
   }
+
+  async newUserRegister(payload) {
+    const url = 'http://localhost:5000/api/v1/auth/register';
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok && response.status !== 400) {
+      throw new Error(
+        `UserService newUserRegister failed, HTTP status ${response.status}`
+      );
+    }
+
+    const apiResponse = await response.json();
+
+    if (!apiResponse.success) {
+      throw apiResponse.error;
+    }
+
+    return apiResponse.token;
+  }
 }
 
 export default new UserService();

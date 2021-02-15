@@ -20,6 +20,7 @@ export class ProfileView extends Component {
       return (
         <div>
           <h1>Profile</h1>
+
           <ViewProfile data={profile} />
         </div>
       );

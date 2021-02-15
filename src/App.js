@@ -9,6 +9,7 @@ import * as userSelectors from './store/users/reducer';
 import BootcampDetail from './container/BootcampDetail';
 import AllBootcamps from './container/AllBootcamps';
 import { UserLogin } from './container/UserLogin';
+import { UserRegister } from './container/UserRegister';
 import ProfileView from './container/ProfileView';
 
 class App extends Component {
@@ -42,6 +43,17 @@ class App extends Component {
                 </NavLink>
               )}
             </NavItem>
+            <NavItem>
+              {token === null ? (
+                <NavLink
+                  to="/register"
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  Register
+                </NavLink>
+              ) : null}
+            </NavItem>
           </Nav>
         </Navbar>
 
@@ -50,6 +62,7 @@ class App extends Component {
           <Route exact path="/bootcamps/:id" component={BootcampDetail} />
           <Route exact path="/login" component={UserLogin} />
           <Route exact path="/profile" component={ProfileView} />
+          <Route exact path="/register" component={UserRegister} />
         </Switch>
       </div>
     );

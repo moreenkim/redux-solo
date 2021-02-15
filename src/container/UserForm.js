@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Form, FormGroup, Col, Input, Button, Label } from 'reactstrap';
+import { Form, FormGroup, Col, Input, Button } from 'reactstrap';
 //import PropTypes from 'prop-types';
 
 export class UserForm extends Component {
@@ -58,13 +58,12 @@ export class UserForm extends Component {
               </FormGroup>
 
               <FormGroup className="row">
-                <Col md="3">
-                  <Label for="password">Password*</Label>
-                </Col>
-                <Col md="9">
+                <Col sm="6">
                   <Input
                     name="password"
                     type="password"
+                    bsSize="lg"
+                    placeholder="Password"
                     aria-label="password"
                     onChange={handleChange}
                     onBlur={handleBlur}
