@@ -44,15 +44,7 @@ class App extends Component {
               )}
             </NavItem>
             <NavItem>
-              {token !== null ? (
-                <NavLink
-                  to="/login"
-                  className="nav-link"
-                  activeClassName="active"
-                >
-                  Login
-                </NavLink>
-              ) : (
+              {token === null ? (
                 <NavLink
                   to="/register"
                   className="nav-link"
@@ -60,7 +52,7 @@ class App extends Component {
                 >
                   Register
                 </NavLink>
-              )}
+              ) : null}
             </NavItem>
           </Nav>
         </Navbar>
