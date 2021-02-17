@@ -90,7 +90,6 @@ export class RegisterForm extends Component {
               }
             });
           } catch (error) {
-            debugger;
             console.error(error);
           }
         }}
