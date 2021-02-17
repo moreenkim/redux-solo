@@ -16,11 +16,11 @@ export class BootcampDetail extends Component {
     console.log('render bootcamp:', this.props.bootcamp.asMutable());
     const bootcamp = this.props.bootcamp.asMutable();
     console.log('object keys:', Object.keys(bootcamp).length);
+    console.log('data', bootcamp.data);
     if (Object.keys(bootcamp).length) {
       //debugger;
       return (
         <div>
-          <h1>Bootcamp</h1>
           <DetailView data={bootcamp.data} />
         </div>
       );
