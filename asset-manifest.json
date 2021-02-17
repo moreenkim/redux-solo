@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/redux-solo/static/css/main.c3d224eb.chunk.css",
+    "main.js": "/redux-solo/static/js/main.2e47e96f.chunk.js",
+    "main.js.map": "/redux-solo/static/js/main.2e47e96f.chunk.js.map",
+    "runtime-main.js": "/redux-solo/static/js/runtime-main.2dae90ca.js",
+    "runtime-main.js.map": "/redux-solo/static/js/runtime-main.2dae90ca.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/redux-solo/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.ed1b4829.chunk.js": "/redux-solo/static/js/2.ed1b4829.chunk.js",
+    "static/js/2.ed1b4829.chunk.js.map": "/redux-solo/static/js/2.ed1b4829.chunk.js.map",
+    "static/js/3.b80c2de7.chunk.js": "/redux-solo/static/js/3.b80c2de7.chunk.js",
+    "static/js/3.b80c2de7.chunk.js.map": "/redux-solo/static/js/3.b80c2de7.chunk.js.map",
+    "index.html": "/redux-solo/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/redux-solo/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.c3d224eb.chunk.css.map": "/redux-solo/static/css/main.c3d224eb.chunk.css.map",
+    "static/js/2.ed1b4829.chunk.js.LICENSE.txt": "/redux-solo/static/js/2.ed1b4829.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2dae90ca.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.ed1b4829.chunk.js",
+    "static/css/main.c3d224eb.chunk.css",
+    "static/js/main.2e47e96f.chunk.js"
+  ]
+}
