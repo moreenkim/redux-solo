@@ -1,5 +1,6 @@
 import BootcampDetails from '../../services/bootcamps';
 import * as types from './actionTypes';
+import * as errorHandlerTypes from '../errorHandler/actionTypes';
 
 export function fetchBootcamp(id) {
   return async (dispatch) => {
@@ -27,6 +28,21 @@ export function fetchAllBootcamps() {
       });
     } catch (error) {
       console.error(error);
+    }
+  };
+}
+
+export function writeReview(payload) {
+  return async (dispatch) => {
+    try {
+      await BootcampDetails.addReview(payload);
+      dispatch({
+        type: errorHandlerTypes.REQUEST_SUCCESS,
+      });
+    } catch (error) {
+      dispatch({
+        type: errorHandlerTypes.REQUEST_FAILURE,
+      });
     }
   };
 }

@@ -11,6 +11,7 @@ import AllBootcamps from './container/AllBootcamps';
 import { UserLogin } from './container/UserLogin';
 import { UserRegister } from './container/UserRegister';
 import ProfileView from './container/ProfileView';
+import { AddReview } from './container/AddReview';
 
 class App extends Component {
   render() {
@@ -63,6 +64,7 @@ class App extends Component {
           <Route exact path="/login" component={UserLogin} />
           <Route exact path="/profile" component={ProfileView} />
           <Route exact path="/register" component={UserRegister} />
+          <Route exact path="/add-review/:id" component={AddReview} />
         </Switch>
       </div>
     );

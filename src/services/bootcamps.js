@@ -39,6 +39,32 @@ class BootcampDetails {
     }
     return apiResponse;
   }
+
+  async addReview({ id, payload, token }) {
+    const url = `http://localhost:5000/api/v1/bootcamps/${id}/reviews`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) {
+      throw new Error(
+        `BootcampDetails addReview failed, HTTP status ${response.status}`
+      );
+    }
+
+    //return api response
+    const apiResponse = await response.json();
+
+    if (!apiResponse.success) {
+      throw apiResponse.error;
+    }
+
+    return apiResponse.success;
+  }
 }
 
 export default new BootcampDetails();

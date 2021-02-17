@@ -9,7 +9,7 @@ export default class FormView extends Component {
       <section className="form-view">
         <Row>
           <Col sm="12" md={{ size: 8, offset: 2 }}>
-            <Card className="kaznet-form">
+            <Card>
               <CardBody>
                 <div>{this.props.form}</div>
               </CardBody>
