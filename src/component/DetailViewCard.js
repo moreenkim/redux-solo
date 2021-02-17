@@ -14,8 +14,6 @@ import {
 const DetailViewCard = (props) => {
   const { name, description, id } = props.data;
 
-  console.log(props.data);
-
   return (
     <div>
       <Card>
