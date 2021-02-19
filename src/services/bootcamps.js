@@ -65,6 +65,26 @@ class BootcampDetails {
 
     return apiResponse.success;
   }
+
+  async readReview(id) {
+    const url = `http://localhost:5000/api/v1/bootcamps/${id}/reviews`;
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+    if (!response.ok) {
+      throw new Error(
+        `BootcampDetails readReview failed, HTTP status ${response.status}`
+      );
+    }
+
+    //return api response
+    const apiResponse = await response.json();
+
+    if (!apiResponse.success) {
+      throw apiResponse.error;
+    }
+    return apiResponse.data;
+  }
 }
 
 export default new BootcampDetails();
