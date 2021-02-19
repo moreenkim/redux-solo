@@ -6,6 +6,7 @@ import * as types from './actionTypes';
 const initialState = Immutable({
   currentBootcamp: {},
   allBootcamps: {},
+  reviews: [],
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -17,6 +18,11 @@ export default function reduce(state = initialState, action = {}) {
     case types.ALL_BOOTCAMPS_FETCHED:
       return state.merge({
         allBootcamps: action.bootcampsData,
+      });
+
+    case types.READ_REVIEWS:
+      return state.merge({
+        reviews: action.reviews,
       });
     default:
       return state;
@@ -30,4 +36,8 @@ export function getBootcamp(state) {
 
 export function getAllBootcamps(state) {
   return state.bootcamps.allBootcamps;
+}
+
+export function readReviewSelector(state) {
+  return state.bootcamps.reviews;
 }
