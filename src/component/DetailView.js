@@ -39,6 +39,14 @@ const DetailView = (props) => {
           ) : null}
 
           <Link
+            to={`/read-reviews/${_id}`}
+            className="btn btn-light btn-block my-3"
+          >
+            <i class="fas fa-pencil-alt"></i>
+            Read Reviews
+          </Link>
+
+          <Link
             to={`/add-review/${_id}`}
             className="btn btn-light btn-block my-3"
           >
