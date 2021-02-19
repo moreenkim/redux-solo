@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as bootcampSelectors from '../store/bootcamps/reducer';
 import * as bootcampActions from '../store/bootcamps/actions';
 import { bindActionCreators } from 'redux';
-import { Spinner } from 'reactstrap';
+import { Spinner, Container } from 'reactstrap';
 
 import DetailViewCard from '../component/DetailViewCard';
 
@@ -21,7 +21,7 @@ export class AllBootcamps extends Component {
       bootcamps = bootcamps.data.map((bootcamp) => {
         return <DetailViewCard data={bootcamp} />;
       });
-      return <div> {bootcamps} </div>;
+      return <Container style={{ marginTop: '1em' }}> {bootcamps} </Container>;
     }
     return (
       <div>
