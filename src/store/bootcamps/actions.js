@@ -42,6 +42,27 @@ export function writeReview(payload) {
     } catch (error) {
       dispatch({
         type: errorHandlerTypes.REQUEST_FAILURE,
+        errorMessage: error,
+      });
+    }
+  };
+}
+
+export function readReviewAction(id) {
+  return async (dispatch) => {
+    try {
+      const reviews = await BootcampDetails.readReview(id);
+      dispatch({
+        type: types.READ_REVIEWS,
+        reviews,
+      });
+      dispatch({
+        type: errorHandlerTypes.REQUEST_SUCCESS,
+      });
+    } catch (error) {
+      dispatch({
+        type: errorHandlerTypes.REQUEST_FAILURE,
+        errorMessage: error,
       });
     }
   };
