@@ -12,6 +12,7 @@ import { UserLogin } from './container/UserLogin';
 import { UserRegister } from './container/UserRegister';
 import ProfileView from './container/ProfileView';
 import { AddReview } from './container/AddReview';
+import ReviewView from './container/ReviewView';
 
 class App extends Component {
   render() {
@@ -23,7 +24,9 @@ class App extends Component {
           <NavbarBrand to="/">DevCamper</NavbarBrand>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/">Bootcamps</NavLink>
+              <NavLink to="/home" className="nav-link" activeClassName="active">
+                Bootcamps
+              </NavLink>
             </NavItem>
             <NavItem>
               {token !== null ? (
@@ -60,11 +63,13 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={AllBootcamps} />
+          <Route exact path="/home" component={AllBootcamps} />
           <Route exact path="/bootcamps/:id" component={BootcampDetail} />
           <Route exact path="/login" component={UserLogin} />
           <Route exact path="/profile" component={ProfileView} />
           <Route exact path="/register" component={UserRegister} />
           <Route exact path="/add-review/:id" component={AddReview} />
+          <Route exact path="/read-reviews/:id" component={ReviewView} />
         </Switch>
       </div>
     );
