@@ -1,2 +1,3 @@
 export const CURRENT_BOOTCAMP_FETCHED = 'bootcamps.CURRENT_BOOTCAMP_FETCHED';
 export const ALL_BOOTCAMPS_FETCHED = 'bootcamps.ALL_BOOTCAMPS_FETCHED ';
+export const READ_REVIEWS = 'bootcamps.READ_REVIEWS';
