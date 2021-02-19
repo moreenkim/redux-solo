@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 
 const DetailViewCard = (props) => {
-  const { name, description, id } = props.data;
+  const { name, description, id, photo } = props.data;
 
   return (
     <div>
@@ -20,7 +20,12 @@ const DetailViewCard = (props) => {
         <Row>
           <Col md="4">
             <CardImg
-              src={`http://localhost:5000/uploads/photo_5d725a037b292f5f8ceff787.jpg`}
+              style={{
+                marginTop: '1.2em',
+                marginLeft: '1em',
+                marginBottom: '1.2em',
+              }}
+              src={`http://localhost:5000/uploads/${photo}`}
             />
           </Col>
           <Col md="8">
